@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `eholi`
 --
+DROP DATABASE IF EXISTS eholi;
+CREATE DATABASE eholi CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE eholi;
 
 -- --------------------------------------------------------
 
@@ -628,16 +631,16 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `edad`, `email`, `password`, `telefono`, `rol`, `estado`, `preferencias`, `foto_perfil`, `creado_en`, `actualizado_en`) VALUES
 (1, 'Nicole', 'Staff', 23, 'ns@eholi.com', '$2y$10$Q5rCycOHbalweJ83JYmzOekm3T/5x8//G.B8iuc6.f5KRF5KOGcba', NULL, 'admin', 'activo', NULL, NULL, '2025-11-27 14:47:11', '2025-11-27 23:21:26'),
-(2, 'Harold', 'Sánchez', 20, 'hs@eholi.com', '$2y$10$agN0/gV08HQlq9ljpzmjSuRoufgBuyazRWTY4K.5KWBaTFcoT43Ca', NULL, 'anfitrion', 'activo', NULL, NULL, '2025-11-27 14:47:11', '2025-11-27 23:48:43'),
-(3, 'Moisés', 'Sanchez', 21, 'ms@eholi.com', '$2y$10$Q0CfEgqUAlP8bSopTUvJgOxJ6g9Rl6BrvYiGuYh59hHs5Eyh9rJs2', NULL, 'huesped', 'activo', NULL, NULL, '2025-11-27 14:47:11', '2025-11-27 14:47:11'),
-(4, 'Yahna', 'Chee', 29, 'yc@eholi.com', '$2y$10$uBi3BpVjGlyXIqDcWuQHeOq9qegArDj/gRtrUPVHYNLqSar8.LswO', NULL, 'postulante', 'activo', NULL, NULL, '2025-11-27 14:47:11', '2025-11-27 14:47:11'),
-(5, 'Carlos', 'Ramos', 30, 'cr@eholi.com', '$2y$10$7B4uSdjvHBV7nmRVWdd.3eP4KD1wHIC1A.u5tHPgljKA6Uu1QJCAu', NULL, 'soporte', 'activo', NULL, NULL, '2025-11-27 14:47:11', '2025-11-27 14:47:11'),
-(6, 'María', 'Gómez', 65, 'mg@eholi.com', '$2y$10$fN8X7gDk5bUo0hLpQr2ZeuVq3Yc7sWnL9tMp1vF0xW9jE4mO0oT3', NULL, 'anfitrion', 'activo', NULL, NULL, '2025-11-27 14:47:11', '2025-11-27 14:47:11'),
-(7, 'Juan', 'Díaz', 72, 'jd@eholi.com', '$2y$10$1WvT8aVqC2rYpS3oLm4GgXzE0yIu6jJ7hK5cM2dU2gP6aQ1qR8sW', NULL, 'anfitrion', 'activo', NULL, NULL, '2025-11-27 14:47:11', '2025-11-27 14:47:11'),
-(8, 'Ana', 'Pérez', 45, 'ap@eholi.com', '$2y$10$2lGvXwZcT4fYrUoM5pQ8sYd0xJpC9lV7mH8kE3nT6oI1fR0sX2wV', NULL, 'huesped', 'activo', NULL, NULL, '2025-11-27 14:47:11', '2025-11-27 14:47:11'),
-(9, 'Pedro', 'López', 50, 'pl@eholi.com', '$2y$10$3nOaZwXfU6gHjQyK7rI9tAe1xM0pL2sD5vJ4wE6uH7vC8bZ9yF0t', NULL, 'huesped', 'activo', NULL, NULL, '2025-11-27 14:47:11', '2025-11-27 14:47:11'),
-(10, 'Lucía', 'Vera', 35, 'lv@eholi.com', '$2y$10$4oQwXyZaV8hImRjS9tU2pB3eC4fG5iH6jK7lM8nO9pQ0rS1tU2vW', NULL, 'admin', 'activo', NULL, NULL, '2025-11-27 14:47:11', '2025-11-27 14:47:11'),
-(11, 'Diego', 'Salazar', 0, 'ds@eholi.com', '$2y$10$wgIDMDi7pizffP7Fc3FC7.ZIBdoBVZndVibrtnnt/HOvc8XzW3XAO', '62685533', 'huesped', 'activo', NULL, NULL, '2025-11-28 00:08:12', '2025-11-28 00:08:12');
+(2, 'Harold', 'Sánchez', 20, 'hs@eholi.com', '$2y$10$ET.hiyagmZvkySY0sTxEa.A6jpV3pSW2bAefKSfo4v0B34jyfo5kC', NULL, 'anfitrion', 'activo', NULL, NULL, '2025-11-27 14:47:11', '2025-11-27 23:48:43'),
+(3, 'Moisés', 'Sanchez', 21, 'ms@eholi.com', '2y$10$gpW3TyLPrFH3zv2W9a0rLuzM5PCt/auf8ZvCveoAjTlAfSH28ksJi', NULL, 'huesped', 'activo', NULL, NULL, '2025-11-27 14:47:11', '2025-11-27 14:47:11'),
+(4, 'Yahna', 'Chee', 29, 'yc@eholi.com', '$2y$10$tEzTF..OwBwNjhNZVyxK7eqR4HxmN5qtFXjF5Q8YD4gvrNWFL7zL6', NULL, 'postulante', 'activo', NULL, NULL, '2025-11-27 14:47:11', '2025-11-27 14:47:11'),
+(5, 'Carlos', 'Ramos', 30, 'cr@eholi.com', '$2y$10$6V46kU1Oh74vt19Roi2gvulin/mNPuEhkqs8.XUnDz0TSpJT6T2Xq', NULL, 'soporte', 'activo', NULL, NULL, '2025-11-27 14:47:11', '2025-11-27 14:47:11'),
+(6, 'María', 'Gómez', 65, 'mg@eholi.com', '$2y$10$W17Li2HQvpyjtlkXcDecA.Vd9BuM.Q.CkmfK6ahVRqpvB88AuXJpy', NULL, 'anfitrion', 'activo', NULL, NULL, '2025-11-27 14:47:11', '2025-11-27 14:47:11'),
+(7, 'Juan', 'Díaz', 72, 'jd@eholi.com', '$2y$10$0EXc5hi0AS6SQB1.b8SyWeM.p3Rw3CAEvuRYok8XHAZiiTM4ZusSq', NULL, 'anfitrion', 'activo', NULL, NULL, '2025-11-27 14:47:11', '2025-11-27 14:47:11'),
+(8, 'Ana', 'Pérez', 45, 'ap@eholi.com', '$2y$10$RxFmXnuTlotnNQ1OuHhGiOFfpBjQ/iDQt6iPj.sx4hle/G6r3W/0S', NULL, 'huesped', 'activo', NULL, NULL, '2025-11-27 14:47:11', '2025-11-27 14:47:11'),
+(9, 'Pedro', 'López', 50, 'pl@eholi.com', '$2y$10$FtmoyY7Og.FZnUkO96gGIOC2GJ9pOlFSSjqwSiAwoV7FhUrxDJ2R2', NULL, 'huesped', 'activo', NULL, NULL, '2025-11-27 14:47:11', '2025-11-27 14:47:11'),
+(10, 'Lucía', 'Vera', 35, 'lv@eholi.com', '$2y$10$NLUehY4mYJMqGjXiYDqO1.1jiKD3gSO3cQd3PV8r8JgY1jLXNVB9u', NULL, 'admin', 'activo', NULL, NULL, '2025-11-27 14:47:11', '2025-11-27 14:47:11'),
+(11, 'Diego', 'Salazar', 0, 'ds@eholi.com', '$2y$10$ZFnYZngsTn192sf9OpPVrOAcb1.SvGPIEw9lGheTbyeV/ls/qUGF6', '62685533', 'huesped', 'activo', NULL, NULL, '2025-11-28 00:08:12', '2025-11-28 00:08:12');
 
 -- --------------------------------------------------------
 
