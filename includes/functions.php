@@ -13,4 +13,15 @@ function safe_output($data) {
     // 'UTF-8': asegurar la codificación correcta
     return htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
 }
+
+/**
+ * Obtiene la cadena de texto traducida.
+ * @param string $key La clave del array de idioma (ej: 'nav_home').
+ * @return string El texto traducido o la clave si no se encuentra (para depuración).
+ */
+function __(string $key): string {
+    global $lang;
+    return $lang[$key] ?? $key;
+}
+
 ?>
