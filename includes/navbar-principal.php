@@ -20,9 +20,8 @@ require_once __DIR__ . '/../security/security.php';
             <?php echo __('nav_search'); ?>
         </a>
     </li>
-    
     <li>
-        <div class="language-switcher">
+       <div class="language-switcher">
             <a href="/set_language.php?lang=es" style="color: <?php echo ($_SESSION['lang'] === 'es') ? 'red' : 'inherit'; ?>;">ES</a> |
             <a href="/set_language.php?lang=en" style="color: <?php echo ($_SESSION['lang'] === 'en') ? 'red' : 'inherit'; ?>;">EN</a>
         </div>

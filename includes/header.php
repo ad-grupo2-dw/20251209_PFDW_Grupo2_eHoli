@@ -1,8 +1,13 @@
 <?php
 require_once __DIR__ . '/../security/security.php';
+
+// Determinar el idioma actual y los colores de los enlaces
+$current_lang = $_SESSION['lang'] ?? 'es';
+$color_es = ($current_lang === 'es') ? 'red' : 'inherit';
+$color_en = ($current_lang === 'en') ? 'red' : 'inherit';
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -90,5 +95,9 @@ require_once __DIR__ . '/../security/security.php';
                 <span class="category-icon">🏕️</span>
                 <span class="category-name">Cabañas</span>
             </div>
+        </div>
+        <div class="language-switcher">
+            <a href="/20251209_PFDW_Grupo2_eHoli/set_language.php?lang=es" style="color: <?php echo $color_es; ?>;">ES</a> |
+            <a href="/20251209_PFDW_Grupo2_eHoli/set_language.php?lang=en" style="color: <?php echo $color_en; ?>;">EN</a>
         </div>
     </nav>

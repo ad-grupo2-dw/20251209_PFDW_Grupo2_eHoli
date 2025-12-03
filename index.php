@@ -92,7 +92,7 @@ $propiedades = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M8 14s6-4 6-8a3 3 0 0 0-6-0 3 3 0 0 0-6 0c0 4 6 8 6 8z"/>
                             </svg>
-                        </button>
+                        </button> 
                         
                         <?php /*
                         <button class="image-nav prev" onclick="event.preventDefault()">‹</button>
