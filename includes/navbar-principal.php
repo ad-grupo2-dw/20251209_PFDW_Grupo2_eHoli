@@ -8,9 +8,25 @@ require_once __DIR__ . '/../security/security.php';
             eHoli
         </a>
         <ul class="header-right" style="list-style:none; display:flex; gap:24px;">
-            <li><a href="/20251209_PFDW_Grupo2_eHoli/index.php" class="btn-host">Inicio</a></li>
-            <li><a href="/huesped/buscar.php">Buscar alojamiento</a></li>
-
+    
+    <li>
+        <a href="/20251209_PFDW_Grupo2_eHoli/index.php" class="btn-host">
+            <?php echo __('nav_home'); ?> 
+        </a>
+    </li>
+    
+    <li>
+        <a href="/huesped/buscar.php">
+            <?php echo __('nav_search'); ?>
+        </a>
+    </li>
+    
+    <li>
+        <div class="language-switcher">
+            <a href="/set_language.php?lang=es" style="color: <?php echo ($_SESSION['lang'] === 'es') ? 'red' : 'inherit'; ?>;">ES</a> |
+            <a href="/set_language.php?lang=en" style="color: <?php echo ($_SESSION['lang'] === 'en') ? 'red' : 'inherit'; ?>;">EN</a>
+        </div>
+    </li>
             <?php 
             // 🔑 CAMBIO CLAVE AQUÍ: Usar 'user_id'
             if (isset($_SESSION['user_id'])): 
@@ -41,4 +57,8 @@ require_once __DIR__ . '/../security/security.php';
             <?php endif; ?>
         </ul>
     </div>
+    <div class="language-switcher">
+    <a href="/set_language.php?lang=es">ES</a> |
+    <a href="/set_language.php?lang=en">EN</a>
+</div>
 </nav>
