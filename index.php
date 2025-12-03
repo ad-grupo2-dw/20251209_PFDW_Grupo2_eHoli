@@ -33,11 +33,15 @@ $total_propiedades = $count_stmt->fetchColumn();
 $total_paginas = ceil($total_propiedades / $por_pagina);
 
 // 2. Consulta para OBTENER LAS PROPIEDADES (con LIMIT y OFFSET)
-$query = "SELECT p.*, u.nombre as anfitrion_nombre, u.apellido as anfitrion_apellido,
-          (SELECT AVG(calificacion) FROM resenas WHERE propiedad_id = p.id) as calificacion_promedio,
-          (SELECT COUNT(*) FROM resenas WHERE propiedad_id = p.id) as total_resenas
+$query = "SELECT 
+            p.*, 
+            c.nombre AS tipo,                      -- 🔑 Alias para obtener el nombre de la categoría
+            p.capacidad AS capacidad_huespedes,    -- 🔑 Alias para mapear 'capacidad' a 'capacidad_huespedes'
+            -- NOTA: Si num_habitaciones existe en otra tabla (ej. detalles), debes unirla aquí.
+            u.nombre AS anfitrion_nombre 
           FROM propiedades p
           INNER JOIN usuarios u ON p.anfitrion_id = u.id
+          LEFT JOIN categorias c ON p.categoria_id = c.id  -- 🔑 ASUMO que tienes una tabla CATEGORIAS
           WHERE p.estado = 'disponible'
           ORDER BY p.creado_en DESC
           LIMIT :limit OFFSET :offset";
@@ -52,7 +56,7 @@ $propiedades = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <main class="container">
     <div class="properties-grid">
         <?php foreach ($propiedades as $propiedad): ?>
-            <a href="/huesped/propiedad.php?id=<?php echo $propiedad['id']; ?>" class="property-card">
+            <a href="/20251209_PFDW_Grupo2_eHoli/huesped/propiedad.php?id=<?php echo $propiedad['id']; ?>" class="property-card">
                 <div class="property-images">
                     <?php
                     // Obtener imágenes de la propiedad (Código limpio, no necesita cambios)
@@ -101,11 +105,18 @@ $propiedades = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <?php endif; ?>
                     </div>
                     
-                    <div class="property-details">
-                        <?php echo safe_output($propiedad['tipo']); ?> · 
-                        <?php echo safe_output($propiedad['capacidad_huespedes']); ?> huéspedes · 
-                        <?php echo safe_output($propiedad['num_habitaciones']); ?> habitaciones
-                    </div>
+                                    <div class="property-details">
+                    <?php echo safe_output($propiedad['tipo']); ?> · 
+                    
+                    <?php echo safe_output($propiedad['capacidad_huespedes']); ?> huéspedes · 
+                    
+                    <?php 
+                    // Si no tienes la columna en la BD, omite esta línea temporalmente 
+                    // o usa un valor por defecto.
+                    // Si la añades a la BD, debes añadirla a la consulta SQL del Paso 1.
+                    echo safe_output($propiedad['num_habitaciones'] ?? 'N/A');
+                    ?> habitaciones
+                </div>
                     
                     <div class="property-price">
                         <span class="price-amount">$<?php echo number_format($propiedad['precio_noche'], 2); ?></span> 
