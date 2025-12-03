@@ -8,7 +8,7 @@ require_once __DIR__ . '/../security/security.php';
             eHoli
         </a>
         <ul class="header-right" style="list-style:none; display:flex; gap:24px;">
-            <li><a href="/index.php" class="btn-host">Inicio</a></li>
+            <li><a href="/20251209_PFDW_Grupo2_eHoli/index.php" class="btn-host">Inicio</a></li>
             <li><a href="/huesped/buscar.php">Buscar alojamiento</a></li>
 
             <?php 
