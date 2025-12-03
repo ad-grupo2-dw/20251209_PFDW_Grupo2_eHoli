@@ -35,13 +35,13 @@ $total_paginas = ceil($total_propiedades / $por_pagina);
 // 2. Consulta para OBTENER LAS PROPIEDADES (con LIMIT y OFFSET)
 $query = "SELECT 
             p.*, 
-            c.nombre AS tipo,                      -- 🔑 Alias para obtener el nombre de la categoría
-            p.capacidad AS capacidad_huespedes,    -- 🔑 Alias para mapear 'capacidad' a 'capacidad_huespedes'
-            -- NOTA: Si num_habitaciones existe en otra tabla (ej. detalles), debes unirla aquí.
+            c.nombre AS tipo,                      
+            p.capacidad AS capacidad_huespedes,    
+            p.num_habitaciones AS num_habitaciones, -- 🔑 Ahora esta columna existe y se mapea
             u.nombre AS anfitrion_nombre 
           FROM propiedades p
           INNER JOIN usuarios u ON p.anfitrion_id = u.id
-          LEFT JOIN categorias c ON p.categoria_id = c.id  -- 🔑 ASUMO que tienes una tabla CATEGORIAS
+          LEFT JOIN categorias c ON p.categoria_id = c.id
           WHERE p.estado = 'disponible'
           ORDER BY p.creado_en DESC
           LIMIT :limit OFFSET :offset";

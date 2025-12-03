@@ -449,6 +449,7 @@ CREATE TABLE `propiedades` (
   `pais` varchar(100) NOT NULL,
   `anfitrion_vive` tinyint(1) DEFAULT 0,
   `capacidad` int(11) NOT NULL CHECK (`capacidad` >= 1),
+  `num_habitaciones` int(11) NOT NULL DEFAULT 1 CHECK (`num_habitaciones` >= 0), -- 🔑 NUEVA COLUMNA AÑADIDA
   `admite_por_horas` tinyint(1) DEFAULT 0,
   `precio_noche` decimal(12,2) NOT NULL CHECK (`precio_noche` >= 0),
   `precio_hora` decimal(12,2) NOT NULL CHECK (`precio_hora` >= 0),
@@ -462,14 +463,14 @@ CREATE TABLE `propiedades` (
 -- Volcado de datos para la tabla `propiedades`
 --
 
-INSERT INTO `propiedades` (`id`, `anfitrion_id`, `categoria_id`, `titulo`, `descripcion`, `direccion`, `ciudad`, `pais`, `anfitrion_vive`, `capacidad`, `admite_por_horas`, `precio_noche`, `precio_hora`, `moneda`, `estado`, `creado_en`, `actualizado_en`) VALUES
-(1, 2, 2, 'Apartamento Adaptado Centro', 'Totalmente adaptado con baño especial', 'Av. Central 123', 'Panamá', 'Panamá', 0, 4, 1, 75.00, 15.00, 'USD', 'disponible', '2025-11-27 14:47:12', '2025-11-27 14:47:12'),
-(2, 2, 1, 'Casa de Playa Accesible', 'Frente al mar y acceso para sillas de ruedas', 'Calle Sol 45', 'Playa Blanca', 'Panamá', 0, 6, 1, 120.00, 20.00, 'USD', 'disponible', '2025-11-27 14:47:12', '2025-11-27 14:47:12'),
-(3, 6, 3, 'Villa Senior Vistas', 'Ideal para mayores, todo en una planta', 'Ruta Verde 108', 'Montaña', 'Panamá', 0, 5, 0, 90.00, 0.00, 'USD', 'disponible', '2025-11-27 14:47:12', '2025-11-27 14:47:12'),
-(4, 7, 4, 'Loft Urbano', 'Cerca de hospitales y transporte accesible', 'Calle Centro 11', 'Ciudad', 'Panamá', 0, 3, 1, 60.00, 10.00, 'USD', 'disponible', '2025-11-27 14:47:12', '2025-11-27 14:47:12'),
-(5, 7, 5, 'Eco Refugio', 'Naturaleza, senderos adaptados', 'Ruta Bosque 91', 'Reserva', 'Panamá', 0, 8, 0, 180.00, 0.00, 'USD', 'disponible', '2025-11-27 14:47:12', '2025-11-27 14:47:12'),
-(6, 6, 6, 'Cabaña Romántica', 'Con chimenea y jacuzzi', 'Sendero del Amor 5', 'Valle', 'Panamá', 0, 2, 0, 150.00, 0.00, 'USD', 'publicada', '2025-11-27 14:47:12', '2025-11-27 14:47:12'),
-(7, 2, 7, 'Apartamento Ejecutivo', 'Conexión rápida y escritorio amplio', 'Av. Negocios 101', 'Ciudad', 'Panamá', 0, 2, 1, 80.00, 12.00, 'USD', 'publicada', '2025-11-27 14:47:12', '2025-11-27 14:47:12');
+INSERT INTO `propiedades` (`id`, `anfitrion_id`, `categoria_id`, `titulo`, `descripcion`, `direccion`, `ciudad`, `pais`, `anfitrion_vive`, `capacidad`, `num_habitaciones`, `admite_por_horas`, `precio_noche`, `precio_hora`, `moneda`, `estado`, `creado_en`, `actualizado_en`) VALUES
+(1, 2, 2, 'Apartamento Adaptado Centro', 'Totalmente adaptado con baño especial', 'Av. Central 123', 'Panamá', 'Panamá', 0, 4, 1, 1, 75.00, 15.00, 'USD', 'disponible', '2025-11-27 14:47:12', '2025-11-27 14:47:12'),
+(2, 2, 1, 'Casa de Playa Accesible', 'Frente al mar y acceso para sillas de ruedas', 'Calle Sol 45', 'Playa Blanca', 'Panamá', 0, 6, 3, 1, 120.00, 20.00, 'USD', 'disponible', '2025-11-27 14:47:12', '2025-11-27 14:47:12'),
+(3, 6, 3, 'Villa Senior Vistas', 'Ideal para mayores, todo en una planta', 'Ruta Verde 108', 'Montaña', 'Panamá', 0, 5, 2, 0, 90.00, 0.00, 'USD', 'disponible', '2025-11-27 14:47:12', '2025-11-27 14:47:12'),
+(4, 7, 4, 'Loft Urbano', 'Cerca de hospitales y transporte accesible', 'Calle Centro 11', 'Ciudad', 'Panamá', 0, 3, 1, 1, 60.00, 10.00, 'USD', 'disponible', '2025-11-27 14:47:12', '2025-11-27 14:47:12'),
+(5, 7, 5, 'Eco Refugio', 'Naturaleza, senderos adaptados', 'Ruta Bosque 91', 'Reserva', 'Panamá', 0, 8, 4, 0, 180.00, 0.00, 'USD', 'disponible', '2025-11-27 14:47:12', '2025-11-27 14:47:12'),
+(6, 6, 6, 'Cabaña Romántica', 'Con chimenea y jacuzzi', 'Sendero del Amor 5', 'Valle', 'Panamá', 0, 2, 1, 0, 150.00, 0.00, 'USD', 'publicada', '2025-11-27 14:47:12', '2025-11-27 14:47:12'),
+(7, 2, 7, 'Apartamento Ejecutivo', 'Conexión rápida y escritorio amplio', 'Av. Negocios 101', 'Ciudad', 'Panamá', 0, 2, 1, 1, 80.00, 12.00, 'USD', 'publicada', '2025-11-27 14:47:12', '2025-11-27 14:47:12');
 
 -- --------------------------------------------------------
 
