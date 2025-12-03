@@ -34,17 +34,30 @@ $total_paginas = ceil($total_propiedades / $por_pagina);
 
 // 2. Consulta para OBTENER LAS PROPIEDADES (con LIMIT y OFFSET)
 $query = "SELECT 
-            p.*, 
-            c.nombre AS tipo,                      
-            p.capacidad AS capacidad_huespedes,    
-            p.num_habitaciones AS num_habitaciones, -- 🔑 Ahora esta columna existe y se mapea
-            u.nombre AS anfitrion_nombre 
-          FROM propiedades p
-          INNER JOIN usuarios u ON p.anfitrion_id = u.id
-          LEFT JOIN categorias c ON p.categoria_id = c.id
-          WHERE p.estado = 'disponible'
-          ORDER BY p.creado_en DESC
-          LIMIT :limit OFFSET :offset";
+    p.*, 
+    c.nombre AS tipo,                      
+    p.capacidad AS capacidad_huespedes,    
+    p.num_habitaciones AS num_habitaciones, 
+    u.nombre AS anfitrion_nombre,
+    
+    -- 🔑 AÑADIR ESTA SUB-CONSULTA/JOIN
+    COALESCE(AVG(r.calificacion), 0) AS calificacion_promedio 
+
+FROM propiedades p
+
+INNER JOIN usuarios u ON p.anfitrion_id = u.id
+LEFT JOIN categorias c ON p.categoria_id = c.id
+
+-- 🔑 UNIÓN para calcular el promedio de las calificaciones (r)
+LEFT JOIN resenas r ON p.id = r.propiedad_id 
+
+WHERE p.estado = 'disponible'
+
+-- 🔑 AGRUPAR por la propiedad para que AVG() funcione
+GROUP BY p.id 
+
+ORDER BY p.creado_en DESC
+LIMIT :limit OFFSET :offset";
 
 $stmt = $conn->prepare($query);
 $stmt->bindParam(':limit', $por_pagina, PDO::PARAM_INT);
