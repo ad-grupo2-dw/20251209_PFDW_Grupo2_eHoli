@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `eholi`
 --
+DROP DATABASE IF EXISTS eholi;
+CREATE DATABASE eholi CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE eholi;
 
 -- --------------------------------------------------------
 
